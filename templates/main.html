@@ -14,7 +14,7 @@
       body {
         padding-top: 10px;
         padding-bottom: 40px;
-        background-color: #2F4F4F;
+        background-color: #FFFFFF
       }
 
       .form-signin {
@@ -60,23 +60,32 @@
             <div class="span2">
               <!--Sidebar content-->
                 <img src="/static/img/timg.jpg" class="img-rounded">
-                <ul class="nav nav-list">
+                <ul class="nav nav-tabs nav-stacked">
                   <li class="nav-header">List header</li>
                   <li ><a href="index.html">首页</a></li>
-                  <li ><a href="#">Scripts</a></li>
-                  <li ><a href="#">Servers</a></li>
+                  <li ><a  href="javascript:void(0)" id="a_1" name="a_1" onclick="ajax_load()" >邮件</a></li>
+                  <li ><a href="#">脚本</a></li>
                   <li ><a href="#">运行状态</a></li>
                   <li ><a href="#">设置</a></li>
                   <li ><a href="#">日志</a></li>
-                  <li><a href="#">Library</a></li>
+                  <li><a href="#">服务器列表</a></li>
                 </ul>
             </div>
-            <div class="span10">
+            <div class="span10" >
               <!--Body content-->
                 <div class="page-header">
-                  <h1>Example page header <small>Subtext for header</small></h1>
+                    <div class="row-fluid">
+                        <div class="span8">
+                            <h1>Example page header <small>Subtext for header</small></h1>
+                        </div>
+                        <div class="span4">
+                            <form class="navbar-search pull-left">
+                              <input type="text" class="search-query" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-unit">
+                <div id="div_1" name="div_1" class="hero-unit">
                   <h1>Heading</h1>
                   <p>Tagline</p>
                   <p>
@@ -114,6 +123,11 @@
 
 
   <script type="application/javascript">
+      function ajax_load(){
+
+            //alert($name);
+            $('#div_1').empty().load('servers.html');
+        }
 
   </script>
     <!-- Le javascript

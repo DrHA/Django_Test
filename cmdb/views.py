@@ -26,3 +26,6 @@ def main(request):
 
 def sign(request):
     return render(request,"sign.html","")
+
+def servers(request):
+    return render(request,"servers.html","")
