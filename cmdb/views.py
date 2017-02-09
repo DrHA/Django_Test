@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from cmdb import models
+from cmdb import servers_status
 
 
 
@@ -28,4 +29,26 @@ def sign(request):
     return render(request,"sign.html","")
 
 def servers(request):
-    return render(request,"servers.html","")
+    free_m = servers_status.server_status()
+    print(free_m)
+    return render(request,"servers.html",{"data":free_m})
+
+def log(request):
+    return render(request,"log.html","")
+
+def scripts(request):
+    return render(request,"scripts.html","")
+
+def config(request):
+    return render(request,"config.html","")
+
+def mails(request):
+    return render(request,"mails.html","")
+
+def server_list(request):
+    ser_list = models.Server_list.objects.all()
+    return render(request,"server_list.html", {"data": ser_list})
+
+def user_list(request):
+    user_list = models.UserInfo.objects.all()
+    return render(request,"user_list.html", {"data": user_list})

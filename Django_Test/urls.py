@@ -19,7 +19,14 @@ from cmdb import views
 
 urlpatterns = [
    # url(r'^admin/', admin.site.urls),
-   url(r'^index/servers/', views.servers),
+   url(r'^index/servers', views.servers),
+   url(r'^index/mails', views.mails),
+   url(r'^index/config', views.config),
+   url(r'^index/log', views.log),
+   url(r'^index/scripts', views.scripts),
+   url(r'^index/server_list', views.server_list),
+   url(r'^index/main', views.main),
+   url(r'^index/user_list', views.user_list),
    url(r'^main/', views.main),
    url(r'^sign/', views.sign),
    url(r'^index/', views.index),

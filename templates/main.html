@@ -59,30 +59,28 @@
       <div class="row-fluid">
             <div class="span2">
               <!--Sidebar content-->
-                <img src="/static/img/timg.jpg" class="img-rounded">
+                <a href="main.html"><img src="/static/img/timg.jpg" class="img-rounded"></a>
                 <ul class="nav nav-tabs nav-stacked">
                   <li class="nav-header">List header</li>
-                  <li ><a href="index.html">首页</a></li>
-                  <li ><a  href="javascript:void(0)" id="a_1" name="a_1" onclick="ajax_load()" >邮件</a></li>
-                  <li ><a href="#">脚本</a></li>
-                  <li ><a href="#">运行状态</a></li>
-                  <li ><a href="#">设置</a></li>
-                  <li ><a href="#">日志</a></li>
-                  <li><a href="#">服务器列表</a></li>
+                  <li ><a href="main.html">首页</a></li>
+                  <li ><a  href="javascript:void(0)" id="mails" name="a_1" class="a_btn">邮件</a></li>
+                  <li ><a href="javascript:void(0)" id="scripts" class="a_btn">脚本</a></li>
+                  <li ><a href="javascript:void(0)" id="servers" class="a_btn">运行状态</a></li>
+                  <li><a href="javascript:void(0)" id="user_list" class="a_btn">用户列表</a></li>
+                  <li><a href="javascript:void(0)" id="server_list" class="a_btn">服务器列表</a></li>
+                  <li ><a href="javascript:void(0)" id="config" class="a_btn">设置</a></li>
+                  <li ><a href="javascript:void(0)" id="log" class="a_btn">日志</a></li>
+
                 </ul>
             </div>
-            <div class="span10" >
+            <div class="span8" >
               <!--Body content-->
-                <div class="page-header">
+                <div class="page-header" >
                     <div class="row-fluid">
-                        <div class="span8">
+                        <div class="span7">
                             <h1>Example page header <small>Subtext for header</small></h1>
                         </div>
-                        <div class="span4">
-                            <form class="navbar-search pull-left">
-                              <input type="text" class="search-query" placeholder="Search">
-                            </form>
-                        </div>
+
                     </div>
                 </div>
                 <div id="div_1" name="div_1" class="hero-unit">
@@ -95,25 +93,39 @@
                   </p>
                 </div>
                  <div class="hero-unit">
-                  <h1>Heading</h1>
-                  <p>Tagline</p>
+                  <h2>Gettysburg Address</h2>
                   <p>
-                    <a class="btn btn-primary btn-large">
-                      Learn more
-                    </a>
+                      Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in liberty, and dedicated to the proposition that "all men are created equal."
                   </p>
+                     <p>
+                      Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived, and so dedicated, can long endure. We are met on a great battle field of that war.
+                      We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives, that that nation might live. It is altogether fitting and proper that we should do this.
+                     </p>
+                     <p>
+                      But, in a larger sense, we can not dedicate—we can not consecrate—we can not hallow—this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or to detract.
+                      The world will little note, nor long remember what we say here; but it can never forget what they did here.
+                         </p>
                 </div>
-                <address>
-                  <strong>Twitter, Inc.</strong><br>
-                  795 Folsom Ave, Suite 600<br>
-                  San Francisco, CA 94107<br>
-                  <abbr title="Phone">P:</abbr> (123) 456-7890
-                </address>
 
-                <address>
-                  <strong>Full Name</strong><br>
-                  <a href="mailto:#">first.last@example.com</a>
-                </address>
+
+                <div  style="align-self: center" >
+                        <address>
+                          <strong>Weibo, Inc.</strong><br>
+                          795 Folsom Ave, Suite 600<br>
+                          San Francisco, CA 94107<br>
+                          <abbr title="Phone">P:</abbr> (+86) 18739974676
+                        </address>
+
+                        <address>
+                          <strong>Full Name</strong><br>
+                          <a href="mailto:#">anwenjie@esunny.cc</a>
+                        </address>
+                    </div>
+                </div>
+
+            </div>
+          <!--右侧显示-->
+            <div class="span2">
             </div>
         </div>
     </div>
@@ -121,19 +133,17 @@
 
 
 
-
-  <script type="application/javascript">
-      function ajax_load(){
-
-            //alert($name);
-            $('#div_1').empty().load('servers.html');
-        }
-
-  </script>
+    <script src="/static/js/jquery-3.1.1.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script type="application/javascript">
+          $(".a_btn").click(function(){
+              var a_id= this.id;
+              $('#div_1').empty().load(a_id);
+          });
+     </script>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/static/js/jquery-3.1.1.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
+
   </body>
 </html>

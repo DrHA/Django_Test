@@ -1,0 +1,22 @@
+
+<h4>管理员列表</h4>
+<table class="table">
+    {% for item in data%}
+      <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.user }}</td>
+      <td>{{ item.email }}</td>
+      </tr>
+    {% endfor %}
+</table>
+<div class="pagination">
+  <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</div>
