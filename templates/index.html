@@ -61,31 +61,68 @@
       <form class="form-signin" action="/index/" method="post" id="form1">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="input-block-level" placeholder="Email address" name="uname" id="uname">
-        <input type="hidden"  id="is_sign" name="is_sign">
         <input type="password" class="input-block-level" placeholder="Password" name="pswd" id="pswd">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button class="btn  btn-primary"  id="bt_login" onclick="return CheckInfo();">Login in</button>
-        <button class="btn  btn-primary"  id="bt_sign" onclick="return Sign();">Sign in</button>
+        <button class="btn btn-primary"  id="bt_login" onclick="return CheckInfo();">Login in</button>
+        <button class="btn btn-primary"  id="bt_sign" data-toggle="modal" data-target="#sign_modal"  >Sign in</button>
       </form>
 
     </div> <!-- /container -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="sign_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="width: 400px;padding-top: 20px">
+       <form class="form-signin" action="/index/" method="post" id="form2">
+          <input type="hidden" id="is_sign" name="is_sign" value="0">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">注册</h4>
+              </div>
+              <div class="modal-body">
+
+                    <input type="text" class="input-block-level" placeholder="Email address" name="email" id="email">
+                    <input type="password" class="input-block-level" placeholder="Password" name="pwd" id="pwd">
+                    <input type="password" class="input-block-level" placeholder="Confirm Password" name="cfm_pwd" id="cfm_pwd">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="bt_login" onclick="return sign_in();" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+
   <script type="application/javascript">
       function CheckInfo(){
             var uname=$("#uname").val();
             var pswd=$("#pswd").val();
-            if(uname == null || pswd == null){
-                alert("用户名和密码不能为空！"+uname+pswd);
-            }
-            else{
+            if(uname == "" || pswd == ""){
+                alert("用户名或密码不能为空！");
+                return false;
+            } else{
                 $("#form1").submit();
             }
       }
-      function Sign(){
-            $("#is_sign").val(1);
-            alert($("#is_sign").val());
-            $("#form1").submit();
+      function sign_in(){
+            var email=$("#email").val();
+            var pwd=$("#pwd").val();
+            var cfm_pwd=$("#cfm_pwd").val();
+            if(pwd == "" || pwd != cfm_pwd ){
+                alert("两次输入密码不一致！");
+                return false;
+            }
+            if(uname == "" || pswd == "" ){
+                alert("用户名或密码不能为空！");
+                return false;
+            } else{
+                $("#is_sign").val("1");
+                $("#form1").submit();
+            }
+          return 0;
       }
   </script>
     <!-- Le javascript

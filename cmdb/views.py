@@ -2,20 +2,19 @@ from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from cmdb import models
 from cmdb import servers_status
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
     if request.method == 'POST':
-        uname = request.POST.get("uname",None)
-        pswd = request.POST.get("pswd",None)
         is_sign = request.POST.get("is_sign",None)
-        print(is_sign)
-        if is_sign == "1":
-            return render(request,'sign.html')
-        print(uname,pswd)
-        models.UserInfo.objects.create(user=uname,pwd=pswd)
-        return render(request,'main.html')
+        if(is_sign == "1"):
+            uname = request.POST.get("email",None)
+            pswd = request.POST.get("pwd",None)
+            models.UserInfo.objects.create(user=uname,pwd=pswd,email=uname)
+            return render(request,'main.html')
+        else:
+
     # request.GET
     # return HttpResponse("My First Django")
     userlist = models.UserInfo.objects.all()
@@ -51,4 +50,16 @@ def server_list(request):
 
 def user_list(request):
     user_list = models.UserInfo.objects.all()
-    return render(request,"user_list.html", {"data": user_list})
+    paginator = Paginator(user_list, 15) # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    print(page)
+    try:
+        contacts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        contacts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        contacts = paginator.page(paginator.num_pages)
+    return render(request,"user_list.html", {"data": contacts})
